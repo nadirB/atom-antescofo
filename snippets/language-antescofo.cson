@@ -1,0 +1,156 @@
+#ACTION DEFINITIONS
+
+'.source.antescofo':
+
+
+    'Loop':
+      'prefix': 'loop'
+      'body': """
+      0. loop ${1://name @tempo=expr (default $RT_TEMPO), @tight (default: @loose), @local (default @global)//}
+      {
+
+          ${2:1}   ${3:action1}
+          ${4:1/4} ${5:action2}
+          ; ...
+
+      } //until(${6:expr})
+    """
+
+    'Curve':
+      'prefix': 'curve'
+      'body':"""
+       curve ${1:slider} @grain := ${2:0.05s}, @Action := ${3:print} ${4:$x} ${5:$y}
+        {
+            ${6:$x}, ${7:$y}
+            {
+                      {${9:0. 2.}}  //@type "exp"
+            ${10:1}   {${11:1. 0.}}
+            ${12:2/5} {${13:1. 0.}}
+            ; ...
+            }
+        }
+      """
+
+    'Curves':
+      'prefix': 'curves'
+      'body':"""
+       curve @Action := ${1:plot} ${2:$NOW}, ${3:$x} ${4:$y} ${5:$z}
+        {
+            ${6:$x},
+            {
+                     {${7:2.0}}
+            ${8:1.0} {${9:4.0}}
+            ${10:1.0} {${11:1.4}}
+
+            }
+
+            ${12:$y}, ${13:$z}
+            {
+                     {${14:5.0, 4.0}}
+            ${15:3.0} {${16:0.3, 7.0}}
+
+            }
+        }
+      """
+
+    'Whenever':
+      'prefix': 'whenever'
+      'body': """
+       whenever (${1:expr})
+        {
+            ${2:1}   ${3:action1}
+            ${4:1/4} ${5:action2}
+            ; ...
+
+        } //until(${6:expr})
+      """
+
+    'Macro Definition':
+      'prefix': 'macro_def'
+      'body': '@macro_def @fun_name()
+  	     {
+            ${1:...}
+         }'
+
+    'Process Definition':
+      'prefix': 'proc_def'
+      'body': '@proc_def ::proc_name()
+         {
+            ${1:...}
+         }'
+
+    'Function Definition':
+      'prefix': 'fun_def'
+      'body': '@fun_def @fun_name()
+         {
+            ${1:...}
+         }'
+
+    'Tab Definition':
+      'prefix': 'tab'
+      'body': '\ttab := [${1:...}]'
+
+    'Map Definition':
+      'prefix': 'map'
+      'body': 'map := {(${1:"a", 1})}'
+
+    'Pattern Definition':
+        'prefix': 'pattern_def'
+        'body': """
+        @pattern_def ${1:pattern::P}
+        {
+
+              STATE ${2:$x} where( ${3: $x > 10} ) during ${4:0.5s}
+              before ${5:1s}
+              EVENT ${6:$y} where ( ${7:$y = 1} )
+
+        }
+      """
+
+    'OSCsend':
+      'prefix': 'oscsend'
+      'body': 'oscsend ${1:test} ${2:"localhost"} :${3:3004} ${4:"/antescofo/hello"}'
+
+    'OSCrecv':
+      'prefix': 'oscreceive'
+      'body': 'oscrecv ${1:receivername} ${2:3007} "/" ${3:$varname}'
+
+    'Group':
+      'prefix': 'group'
+      'body': """
+      0. group ${1://name @tempo=expr (default $RT_TEMPO), @tight (default: @loose), @local (default @global)//}
+      {
+
+            ${2:1}   ${3:action1}
+            ${4:1/4} ${5:action2}
+            ...
+
+
+      }
+    """
+
+#EVENT Definition
+
+    'Note Definition':
+      'prefix': 'note'
+      'body': 'NOTE ${1:C5} ${2:1}'
+
+    'Chord Definition':
+      'prefix': 'chord'
+      'body': 'CHORD (${1:A5 E5}) ${2:1}'
+
+    'Silence Definition':
+      'prefix': 'silence'
+      'body': 'NOTE ${1:0} ${2:1}'
+
+    'Trill Definition':
+      'prefix': 'trill'
+      'body': 'TRILL (${1:C3 D3}) ${2:1}'
+
+    'Multi Definition':
+      'prefix': 'multi'
+      'body': 'MULTI (${1:D3 E4}) ${2:2}'
+
+    'Event Definition':
+      'prefix': 'event'
+      'body': 'event ${1:1} ${2:CUE_01}'
