@@ -1,7 +1,7 @@
 {
   "name": "atom-antescofo",
   "main": "./lib/language-antescofo",
-  "version": "2.3.2",
+  "version": "3.0.0",
   "description": "Antescofo syntax grammar core to activate syntax highlighting",
   "keywords": [
     ".asco",
