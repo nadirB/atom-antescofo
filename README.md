@@ -64,3 +64,5 @@ Some of these commands are also available if you right-click on a word and check
 ### Snippets:
 
 Event and Action snippets are now available. Type curve, pattern or nim and use the tab key ->| to echo the code and cycle through the parameters' fields.
+
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FnadirB%2Fatom-antescofo&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
